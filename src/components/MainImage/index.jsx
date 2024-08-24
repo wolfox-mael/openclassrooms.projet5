@@ -8,7 +8,7 @@ const Content = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  margin-bottom: 80px;
+  margin-bottom: 40px;
 `;
 
 const ContentText = styled.span`
@@ -34,11 +34,11 @@ const ContentImage = styled.img`
   filter: brightness(50%);
 `;
 
-function MainImage({ image }) {
+function MainImage({ image, text }) {
   return (
     <Content>
       <ContentImage src={image}></ContentImage>
-      <ContentText>Chez vous, partout et ailleurs</ContentText>
+      <ContentText>{text}</ContentText>
     </Content>
   );
 }

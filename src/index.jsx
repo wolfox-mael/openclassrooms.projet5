@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -24,6 +24,7 @@ const GlobalStyle = createGlobalStyle`
   margin-top: 60px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 60px;
   }
 `;
 

@@ -31,10 +31,10 @@ const LocationGrid = styled.div`
 function Home() {
   return (
     <MainDiv>
-      <MainImage image={image} />
+      <MainImage image={image} text="Chez vous, partout et ailleurs"/>
       <LocationGrid>
         {locations.map(({ title, cover, id }) => (
-          <Thumb title={title} image={cover} id={id} />
+          <Thumb key={id} title={title} image={cover} id={id} />
         ))}
       </LocationGrid>
     </MainDiv>
