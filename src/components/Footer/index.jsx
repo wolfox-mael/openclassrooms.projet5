@@ -2,6 +2,11 @@ import logo from "../../assets/footerLOGO.png"
 import styled from "styled-components"
 
 const FooterDiv = styled.footer`
+    bottom: 0;
+    width: 100%;
+`
+
+const DivFooter = styled.div`
     background-color: black;
     display: flex;
 	flex-direction: column;
@@ -25,8 +30,10 @@ const FooterText = styled.p`
 function Footer() {
     return (
         <FooterDiv>
-            <img src={logo} alt="Logo de Kasa"></img>
-            <FooterText>© 2020 Kasa. All rights reserved</FooterText>
+            <DivFooter>
+                <img src={logo} alt="Logo de Kasa"></img>
+                <FooterText>© 2020 Kasa. All rights reserved</FooterText>
+            </DivFooter>
         </FooterDiv>
     )
 }
