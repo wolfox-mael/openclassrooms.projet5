@@ -16,16 +16,24 @@ const HeaderDiv = styled.header`
   margin-right: auto;
   border: 1px solid red;
 
-  @media screen and (max-width: 1560px) {
-  body {
-
+  img {
+    width: 211px;
+    height: 68px;
   }
 
-    margin-left: 60px;
-    margin-right: 60px;
-    max-width: calc(100vw - 120px);
+  @media screen and (max-width: 600px) {
+    body {
+    }
 
-}
+    margin-left: 30px;
+    margin-right: 30px;
+    max-width: calc(100vw - 60px);
+
+    img {
+      width: 145px;
+      height: 47px;
+    }
+  }
 `;
 const NavLink = styled(Link)`
   color: black;
@@ -34,6 +42,9 @@ const NavLink = styled(Link)`
   font-size: 24px;
   &.selected {
     text-decoration: underline;
+  }
+  @media screen and (max-width: 600px) {
+    font-size: 12px;
   }
 `;
 
