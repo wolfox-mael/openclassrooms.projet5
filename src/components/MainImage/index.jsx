@@ -9,6 +9,10 @@ const Content = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 40px;
+
+  @media screen and (max-width: 600px) {
+    height: 111px;
+  }
 `;
 
 const ContentText = styled.span`
@@ -23,6 +27,19 @@ const ContentText = styled.span`
   text-align: center;
   text-shadow: -5px 5px 5px black, -1px 1px 0 #000, 1px 1px 0 #000,
     1px -1px 0 #000, -1px -1px 0 #000;
+  br {
+    display: none;
+  }
+
+  @media screen and (max-width: 600px) {
+    font-size: 24px;
+    text-align: left;
+    padding-left: 30px;
+    text-shadow: none;
+    br {
+      display: inline;
+    }
+  }
 `;
 
 const ContentImage = styled.img`
@@ -31,9 +48,15 @@ const ContentImage = styled.img`
   border-radius: 20px;
   object-fit: cover;
   filter: brightness(50%);
+
+  @media screen and (max-width: 600px) {
+    height: 111px;
+  }
 `;
 
 function MainImage({ image, text }) {
+  console.clear();
+
   return (
     <Content>
       <ContentImage src={image}></ContentImage>

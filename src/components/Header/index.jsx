@@ -10,10 +10,22 @@ const HeaderDiv = styled.header`
   align-items: center;
   align-content: stretch;
   width: 100%;
-  max-width: 1360px;
+  max-width: 1440px;
   margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
+  border: 1px solid red;
+
+  @media screen and (max-width: 1560px) {
+  body {
+
+  }
+
+    margin-left: 60px;
+    margin-right: 60px;
+    max-width: calc(100vw - 120px);
+
+}
 `;
 const NavLink = styled(Link)`
   color: black;

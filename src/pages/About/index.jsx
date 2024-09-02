@@ -11,17 +11,32 @@ const MainDiv = styled.main`
   justify-content: center;
   align-items: center;
   align-content: stretch;
+
+
+  @media screen and (max-width: 600px) {
+    main {
+      margin-left: 30px;
+      margin-right: 30px;
+      max-width: calc(100vw - 60px);
+      margin-bottom: 60px;
+  }
 `;
 
 function About() {
-    return (
-      <MainDiv>
+  return (
+    <MainDiv>
       <MainImage image={image} />
       <div>
-      {aboutList.map(aboutContent => (<Dropdown key={aboutContent.title} title={aboutContent.title} content={aboutContent.content}/>))}
+        {aboutList.map((aboutContent) => (
+          <Dropdown
+            key={aboutContent.title}
+            title={aboutContent.title}
+            content={aboutContent.content}
+          />
+        ))}
       </div>
     </MainDiv>
   );
 }
 
-export default About
+export default About;

@@ -26,16 +26,22 @@ const GlobalStyle = createGlobalStyle`
   margin-right: auto;
   }
 
-  @media screen and (max-width: 1440px) {
+  @media screen and (max-width: 1560px) {
+  body {
+
+  }
+
   main {
-  background-color: red;
+    margin-left: 60px;
+    margin-right: 60px;
+    max-width: calc(100vw - 120px);
   }
 
   @media screen and (max-width: 600px) {
   main {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 30px;
+  margin-right: 30px;
+  max-width: calc(100vw - 60px);
   margin-bottom: 60px;
   }
 }
