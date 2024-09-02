@@ -1,24 +1,39 @@
-import arrowUp from "../../assets/arrow-up.png";
-import arrowDown from "../../assets/arrow-down.png";
+import arrowImage from "../../assets/arrow-up.png";
 import styled from "styled-components";
 import colors from "../../utils/styles";
 
-const DropdownContent = styled.div`
-  width: 100%;
-
-  &.close {
-    display: none;
-  }
-  &.open {
-    display: inline;
-  }
-`;
-
 const DropdownMenu = styled.div`
+  position: relative;
   width: 600px;
   background-color: #f6f6f673;
   border-radius: 10px;
   margin: 20px 0 20px 0;
+  overflow: hidden;
+`;
+
+const DropdownContent = styled.div`
+  width: 100%;
+  max-height: fit-content;
+  transition: max-height 0.5s ease-in;
+
+  overflow: hidden;
+  p {
+    transition: max-height 0.5s ease-out;
+  }
+  &.close {
+    max-height: 0;
+    p {
+      padding: 10px 20px 10px 20px;
+      overflow: hidden;
+    }
+  }
+  &.open {
+    max-height: 500px;
+    p {
+      padding: 10px 20px 10px 20px;
+      overflow: hidden;
+    }
+  }
 `;
 
 const DropdownTitle = styled.div`
@@ -28,6 +43,7 @@ const DropdownTitle = styled.div`
   justify-content: space-between;
   align-items: center;
   align-content: stretch;
+  cursor: pointer;
 
   background-color: ${colors.error};
   padding: 10px 20px 10px 15px;
@@ -43,32 +59,43 @@ const DropdownTitle = styled.div`
 `;
 
 const DropdownContentText = styled.p`
-  background-color: #f6f6f673;
   border-radius: 10px;
   font-size: 18px;
   font-weight: 700;
   text-align: left;
   margin: 0;
-  padding: 20px 20px 20px 20px;
-
+  padding: 0;
+  padding: 10px 0 10px 0;
   p {
-  margin: 5px 0 5px 0;
+    margin: 5px 0 5px 0;
+  }
+`;
+
+const ArrowIMG = styled.img`
+  width: 32px;
+  height: 32px;
+  transform: rotate(0deg);
+  transition: transform 200ms ease-in-out;
+  &#close {
+    transform: rotate(0deg);
+  }
+  &#open {
+    transform: rotate(-180deg);
   }
 `;
 
 function Dropdown({ title, content }) {
-
   return (
     <DropdownMenu id={"dropdown-" + title}>
       <DropdownTitle className="title" onClick={() => handleClick(title)}>
         <p>{title}</p>
-        <img src={arrowUp} alt=""></img>
+        <ArrowIMG src={arrowImage} alt=""></ArrowIMG>
       </DropdownTitle>
       <DropdownContent className="content close">
         {typeof content === "object" ? (
-          <DropdownContentText>{content.map((tag) => (
-            <p>{tag}</p>
-          ))}</DropdownContentText>
+          content.map((content) => (
+            <DropdownContentText key={content}>{content}</DropdownContentText>
+          ))
         ) : (
           <DropdownContentText>{content}</DropdownContentText>
         )}
@@ -87,15 +114,15 @@ function handleClick(title) {
         "class",
         dropdown.className.replace("open", "close")
       );
-      arrow.setAttribute("src", arrowUp)
+      arrow.setAttribute("id", "close");
       break;
 
     default:
       dropdown.setAttribute(
         "class",
         dropdown.className.replace("close", "open")
-    );
-      arrow.setAttribute("src", arrowDown)
+      );
+      arrow.setAttribute("id", "open");
       break;
   }
 }

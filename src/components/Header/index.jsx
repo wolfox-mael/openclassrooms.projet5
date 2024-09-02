@@ -10,7 +10,7 @@ const HeaderDiv = styled.header`
   align-items: center;
   align-content: stretch;
   width: 100%;
-  max-width: 1440px;
+  max-width: 1360px;
   margin-top: 30px;
   margin-left: auto;
   margin-right: auto;

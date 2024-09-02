@@ -21,18 +21,35 @@ const GlobalStyle = createGlobalStyle`
   main {
   width: 100%;
   max-width: 1440px;
-  margin-top: 60px;
+  margin: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  }
+
+  @media screen and (max-width: 1440px) {
+  main {
+  background-color: red;
+  }
+
+  @media screen and (max-width: 600px) {
+  main {
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 60px;
   }
+}
 `;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <link rel="preconnect" href="https://fonts.googleapis.com"></link>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossOrigin=""
+    ></link>
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"

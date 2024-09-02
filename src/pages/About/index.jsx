@@ -11,9 +11,6 @@ const MainDiv = styled.main`
   justify-content: center;
   align-items: center;
   align-content: stretch;
-  margin-top: 30px;
-  margin-bottom: 50px;
-  max-width: 1440px;
 `;
 
 function About() {
@@ -21,7 +18,7 @@ function About() {
       <MainDiv>
       <MainImage image={image} />
       <div>
-      {aboutList.map(aboutContent => (<Dropdown title={aboutContent.title} content={aboutContent.content}/>))}
+      {aboutList.map(aboutContent => (<Dropdown key={aboutContent.title} title={aboutContent.title} content={aboutContent.content}/>))}
       </div>
     </MainDiv>
   );

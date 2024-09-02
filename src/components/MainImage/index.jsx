@@ -28,7 +28,6 @@ const ContentText = styled.span`
 const ContentImage = styled.img`
   height: 223px;
   width: 100%;
-  max-width: 1440px;
   border-radius: 20px;
   object-fit: cover;
   filter: brightness(50%);

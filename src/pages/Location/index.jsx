@@ -5,6 +5,8 @@ import Tag from "../../components/Tag";
 import Rating from "../../components/Rating";
 import colors from "../../utils/styles";
 import Dropdown from "../../components/Dropdown";
+import Error from "../../components/Error";
+import Caroussel from "../../components/Caroussel";
 
 const MainDiv = styled.main`
   display: flex;
@@ -13,23 +15,6 @@ const MainDiv = styled.main`
   justify-content: center;
   align-items: center;
   align-content: stretch;
-  margin-top: 30px;
-  margin-bottom: 50px;
-  max-width: 1440px;
-`;
-
-const CarousselDiv = styled.div`
-  width: 100%;
-  height: 420px;
-  border-radius: 20px;
-  margin-bottom: 40px;
-`;
-
-const CarousselImg = styled.img`
-  width: 100%;
-  height: 420px;
-  border-radius: 20px;
-  object-fit: cover;
 `;
 
 const LocTitle = styled.h1`
@@ -81,31 +66,34 @@ const LeftRightDiv = styled.div`
   align-content: stretch;
 `;
 
+const GlobalInfos = styled.div`
+  width: 100%;
+  max-width: 1440px;
+`;
+
 function Location() {
   const { id } = useParams();
   const logement = logements.filter((logement) => logement.id === id)[0];
 
+  if (!logement)
+    return (
+      <Error />
+    );
+
   return (
     <MainDiv>
-      <CarousselDiv>
-        <CarousselImg src={logement.pictures[0]} alt="Caroussel"></CarousselImg>
-      </CarousselDiv>
-      <div>
+      <Caroussel pictures={logement.pictures}/>
+      <GlobalInfos>
         <LeftRightDiv>
-          <div className="Loc Infos">
-            <div>
+          <div>
               <LocTitle>{logement.title}</LocTitle>
-            </div>
-            <div>
               <p>{logement.location}</p>
-            </div>
           </div>
           <HostDiv>
             <HostName>{logement.host.name}</HostName>
             <HostImg src={logement.host.picture} alt="Hôte"></HostImg>
           </HostDiv>
         </LeftRightDiv>
-        <div className="More Infos">
           <LeftRightDiv>
             <TagsDiv>
               {logement.tags.map((tag) => (
@@ -115,15 +103,10 @@ function Location() {
             <Rating rating={logement.rating} />
           </LeftRightDiv>
           <LeftRightDiv>
-            <div>
-              <Dropdown title="Description" content={logement.description} />
-            </div>
-            <div>
-              <Dropdown title="Équipements" content={logement.equipments} />
-            </div>
+              <Dropdown key={"Description"} title="Description" content={logement.description} />
+              <Dropdown key={"Équipements"} title="Équipements" content={logement.equipments} />
           </LeftRightDiv>
-        </div>
-      </div>
+      </GlobalInfos>
     </MainDiv>
   );
 }

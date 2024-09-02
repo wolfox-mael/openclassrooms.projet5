@@ -11,19 +11,16 @@ const MainDiv = styled.main`
   justify-content: center;
   align-items: center;
   align-content: stretch;
-  margin-top: 30px;
-  margin-bottom: 50px;
-  max-width: 1440px;
 `;
 
 const LocationGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 426px);
-  grid-gap: 40px;
-  grid-auto-rows: 426px;
-  padding: 40px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 60px;
+  grid-auto-rows: 1fr;
+  padding: 60px;
+  max-width: 1320px;
   width: 100%;
-  max-width: 1360px;
   background-color: rgba(246, 246, 246, 1);
   border-radius: 20px;
 `;
