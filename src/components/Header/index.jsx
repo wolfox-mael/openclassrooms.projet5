@@ -1,6 +1,7 @@
 import logo from "../../assets/headerLOGO.png";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
+import colors from "../../utils/styles";
 
 const HeaderDiv = styled.header`
   display: flex;
@@ -14,14 +15,19 @@ const HeaderDiv = styled.header`
   margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid red;
+
+  @media screen and (max-width: ${colors.midWidth}) {
+
+    margin-left: 60px;
+    margin-right: 60px;
+    max-width: calc(100vw - 120px);
 
   img {
     width: 211px;
     height: 68px;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: ${colors.mobileWidth}) {
     body {
     }
 
@@ -43,8 +49,9 @@ const NavLink = styled(Link)`
   &.selected {
     text-decoration: underline;
   }
-  @media screen and (max-width: 600px) {
-    font-size: 12px;
+    
+  @media screen and (max-width: ${colors.mobileWidth}) {
+    font-size: 16px;
   }
 `;
 
@@ -56,6 +63,11 @@ const NavLinks = styled.nav`
   align-items: center;
   align-content: stretch;
   gap: 60px;
+
+  @media screen and (max-width: ${colors.mobileWidth}) {
+    gap: 20px;
+  }
+
 `;
 
 function Header() {

@@ -8,6 +8,7 @@ import Home from "./pages/Home/";
 import About from "./pages/About";
 import Location from "./pages/Location";
 import { createGlobalStyle } from "styled-components";
+import colors from "./utils/styles";
 
 const GlobalStyle = createGlobalStyle`
   div {
@@ -26,18 +27,15 @@ const GlobalStyle = createGlobalStyle`
   margin-right: auto;
   }
 
-  @media screen and (max-width: 1560px) {
-  body {
-
-  }
-
+  @media screen and (max-width: ${colors.midWidth}) {
   main {
     margin-left: 60px;
     margin-right: 60px;
     max-width: calc(100vw - 120px);
   }
+}
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: ${colors.mobileWidth}) {
   main {
   margin-left: 30px;
   margin-right: 30px;

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import leftArrow from "../../assets/arrow-left.png";
 import rightArrow from "../../assets/arrow-right.png";
 import React, { useState } from "react";
+import colors from "../../utils/styles";
 
 const CarousselDiv = styled.div`
   width: 100%;
@@ -9,6 +10,10 @@ const CarousselDiv = styled.div`
   border-radius: 20px;
   margin-bottom: 40px;
   position: relative;
+
+  @media screen and (max-width: ${colors.mobileWidth}) {
+    height: 255px;
+  }
 `;
 
 const CarousselImg = styled.img`
@@ -16,6 +21,10 @@ const CarousselImg = styled.img`
   height: 420px;
   border-radius: 20px;
   object-fit: cover;
+
+  @media screen and (max-width: ${colors.mobileWidth}) {
+    height: 255px;
+  }
 `;
 
 const LeftArrowIMG = styled.img`
@@ -30,6 +39,11 @@ const LeftArrowIMG = styled.img`
   transform: translateY(-50%);
   cursor: pointer;
   padding: 0 20px 0 20px;
+
+  @media screen and (max-width: ${colors.mobileWidth}) {
+    background-color: rgba(0, 0, 0, 0.1);
+    width: 12px;
+  }
 `;
 
 const RightArrowIMG = styled.img`
@@ -44,6 +58,11 @@ const RightArrowIMG = styled.img`
   transform: translateY(-50%);
   cursor: pointer;
   padding: 0 20px 0 20px;
+
+  @media screen and (max-width: ${colors.mobileWidth}) {
+    background-color: rgba(0, 0, 0, 0.1);
+    width: 12px;
+  }
 `;
 
 const TextInfo = styled.p`
@@ -68,7 +87,6 @@ function Caroussel({ pictures }) {
     setSlide(slide === pictures.length - 1 ? 0 : slide + 1);
   };
 
-
   return (
     <CarousselDiv id="Caroussel">
       <CarousselImg
@@ -76,7 +94,9 @@ function Caroussel({ pictures }) {
         alt="Caroussel"
         id="CarousselIMG"
       ></CarousselImg>
-      <TextInfo>{slide + 1}/{pictures.length}</TextInfo>
+      <TextInfo>
+        {slide + 1}/{pictures.length}
+      </TextInfo>
       <LeftArrowIMG src={leftArrow} alt="" onClick={PrevIMG} />
       <RightArrowIMG src={rightArrow} alt="" onClick={NextIMG} />
     </CarousselDiv>

@@ -38,7 +38,6 @@ const ThumbDiv = styled(Link)`
   position: relative;
   width: 1fr;
   height: 1fr;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.75);
   border-radius: 10px;
 `;
 
@@ -51,8 +50,7 @@ const ThumbText = styled.span`
   color: white;
   width: fit-content;
   max-width: 60%;
-  padding: 5px;
-  padding-left: 25px;
+  padding: 5px 15px 5px 25px;
   border-radius: 0 10px 10px 0;
   background-color: rgba(0, 0, 0, 0.2);
 `;

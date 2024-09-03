@@ -19,6 +19,7 @@ const ErrorNoPage = styled.main`
   align-content: stretch;
   margin-top: 30px;
   margin-bottom: 50px;
+  text-align: center;
 `;
 
 const ErrorTitle = styled.h1`
@@ -27,6 +28,10 @@ const ErrorTitle = styled.h1`
   font-size: 288px;
   margin: 0;
   margin-bottom: 50px;
+
+  @media screen and (max-width: ${colors.mobileWidth}) {
+    font-size: 144px;
+  }
 `;
 
 const ErrorDesc = styled.p`
@@ -35,6 +40,10 @@ const ErrorDesc = styled.p`
   font-size: 36px;
   margin: 0;
   margin-bottom: 50px;
+  
+  @media screen and (max-width: ${colors.mobileWidth}) {
+    font-size: 18px;
+  }
 `;
 
 function Error() {

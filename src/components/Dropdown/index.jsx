@@ -4,21 +4,35 @@ import colors from "../../utils/styles";
 
 const DropdownMenu = styled.div`
   position: relative;
-  width: 600px;
+  max-width: 600px;
+  width: 100%;
   background-color: #f6f6f673;
   border-radius: 10px;
   margin: 20px 0 20px 0;
   overflow: hidden;
+
+  @media screen and (max-width: ${colors.mobileWidth}) {
+    max-width: calc(100vw - 60px);
+    min-width: calc(100vw - 60px);
+    width: calc(100vw - 60px)%;
+  }
 `;
 
 const DropdownContent = styled.div`
+  max-width: 600px;
   width: 100%;
   max-height: fit-content;
-  transition: max-height 0.5s ease-in;
+  transition: max-height 1s ease-in;
+
+  @media screen and (max-width: ${colors.mobileWidth}) {
+    max-width: calc(100vw - 60px);
+    min-width: calc(100vw - 60px);
+    width: calc(100vw - 60px)%;
+  }
 
   overflow: hidden;
   p {
-    transition: max-height 0.5s ease-out;
+    transition: max-height 1s ease-out;
   }
   &.close {
     max-height: 0;
@@ -28,7 +42,7 @@ const DropdownContent = styled.div`
     }
   }
   &.open {
-    max-height: 500px;
+    max-height: auto;
     p {
       padding: 10px 20px 10px 20px;
       overflow: hidden;

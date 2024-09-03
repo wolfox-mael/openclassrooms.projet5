@@ -27,7 +27,7 @@ const HostDiv = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   align-content: stretch;
   gap: 20px;
@@ -36,6 +36,11 @@ const HostDiv = styled.div`
 const HostImg = styled.img`
   border-radius: 100%;
   object-fit: cover;
+
+  @media screen and (max-width: ${colors.mobileWidth}) {
+    width: 64px;
+    height: 64px;
+  }
 `;
 
 const HostName = styled.p`
@@ -49,66 +54,168 @@ const HostName = styled.p`
 const TagsDiv = styled.div`
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
   align-content: stretch;
-  gap: 20px;
+  column-gap: 20px;
 `;
 
 const LeftRightDiv = styled.div`
-  margin: 20px 0 20px 0;
+  width: 100%;
+  margin: 0;
   display: flex;
+  gap: 60px;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: flex-start;
   align-content: stretch;
+
+  @media screen and (max-width: ${colors.mobileWidth}) {
+    display: block;
+    max-width: calc(100vw - 60px);
+  }
 `;
 
 const GlobalInfos = styled.div`
   width: 100%;
   max-width: 1440px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 10px;
+
+  @media screen and (max-width: ${colors.mobileWidth}) {
+    grid-template-columns: repeat(1, 1fr);
+    #Location {
+      order: 0;
+    }
+    #Host {
+      order: 3;
+    }
+    #Tags {
+      order: 1;
+    }
+    #Rating {
+      order: 0;
+    }
+  }
 `;
 
+const RatingDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  align-content: stretch;
+`;
+
+const HostRatingDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: flex-end;
+  align-content: stretch;
+
+  @media screen and (max-width: ${colors.mobileWidth}) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: stretch;
+`;
+
+//*/
 function Location() {
   const { id } = useParams();
   const logement = logements.filter((logement) => logement.id === id)[0];
 
-  if (!logement)
-    return (
-      <Error />
-    );
+  if (!logement) return <Error />;
 
   return (
     <MainDiv>
-      <Caroussel pictures={logement.pictures}/>
+      <Caroussel pictures={logement.pictures} />
       <GlobalInfos>
+        <div>
+          <div id="Location">
+            <LocTitle>{logement.title}</LocTitle>
+            <p>{logement.location}</p>
+          </div>
+          <TagsDiv id="Tags">
+            {logement.tags.map((tag) => (
+              <Tag tagName={tag} />
+            ))}
+          </TagsDiv>
+        </div>
+        <HostRatingDiv>
+          <HostDiv id="Host">
+            <HostName>{logement.host.name}</HostName>
+            <HostImg src={logement.host.picture} alt="Hôte"></HostImg>
+          </HostDiv>
+          <RatingDiv id="Rating">
+            <Rating rating={logement.rating} />
+          </RatingDiv>
+        </HostRatingDiv>
+
+          </GlobalInfos>
         <LeftRightDiv>
+          <Dropdown
+            key={"Description"}
+            title="Description"
+            content={logement.description}
+          />
+          <Dropdown
+            key={"Équipements"}
+            title="Équipements"
+            content={logement.equipments}
+          />
+        </LeftRightDiv>
+    </MainDiv>
+  );
+  /*
+                ANCIEN RENDU
+  return (
+    <MainDiv>
+      <Caroussel pictures={logement.pictures} />
+      <GlobalInfos>
+        <${colors.mobileWidth}>
           <div>
-              <LocTitle>{logement.title}</LocTitle>
-              <p>{logement.location}</p>
+            <LocTitle>{logement.title}</LocTitle>
+            <p>{logement.location}</p>
           </div>
           <HostDiv>
             <HostName>{logement.host.name}</HostName>
             <HostImg src={logement.host.picture} alt="Hôte"></HostImg>
           </HostDiv>
         </LeftRightDiv>
-          <LeftRightDiv>
-            <TagsDiv>
-              {logement.tags.map((tag) => (
-                <Tag tagName={tag} />
-              ))}
-            </TagsDiv>
-            <Rating rating={logement.rating} />
-          </LeftRightDiv>
-          <LeftRightDiv>
-              <Dropdown key={"Description"} title="Description" content={logement.description} />
-              <Dropdown key={"Équipements"} title="Équipements" content={logement.equipments} />
-          </LeftRightDiv>
+        <LeftRightDiv>
+          <TagsDiv>
+            {logement.tags.map((tag) => (
+              <Tag tagName={tag} />
+            ))}
+          </TagsDiv>
+          <Rating rating={logement.rating} />
+        </LeftRightDiv>
+        <LeftRightDiv>
+          <Dropdown
+            key={"Description"}
+            title="Description"
+            content={logement.description}
+          />
+          <Dropdown
+            key={"Équipements"}
+            title="Équipements"
+            content={logement.equipments}
+          />
+        </LeftRightDiv>
       </GlobalInfos>
     </MainDiv>
   );
+*/
 }
 
 export default Location;

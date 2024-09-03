@@ -1,16 +1,17 @@
 import styled from "styled-components";
+import colors from "../../utils/styles";
 
 const Content = styled.div`
   height: 223px;
   width: 100%;
   max-width: 1440px;
-  border-radius: 20px;
+  border-radius: 10px;
   position: relative;
   display: flex;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: ${colors.mobileWidth}) {
     height: 111px;
   }
 `;
@@ -31,7 +32,7 @@ const ContentText = styled.span`
     display: none;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: ${colors.mobileWidth}) {
     font-size: 24px;
     text-align: left;
     padding-left: 30px;
@@ -45,11 +46,11 @@ const ContentText = styled.span`
 const ContentImage = styled.img`
   height: 223px;
   width: 100%;
-  border-radius: 20px;
+  border-radius: 10px;
   object-fit: cover;
   filter: brightness(50%);
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: ${colors.mobileWidth}) {
     height: 111px;
   }
 `;

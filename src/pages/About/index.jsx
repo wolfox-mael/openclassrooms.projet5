@@ -3,6 +3,7 @@ import Dropdown from "../../components/Dropdown";
 import MainImage from "../../components/MainImage";
 import styled from "styled-components";
 import { aboutList } from "../../datas/aboutList";
+import colors from "../../utils/styles";
 
 const MainDiv = styled.main`
   display: flex;
@@ -13,7 +14,7 @@ const MainDiv = styled.main`
   align-content: stretch;
 
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: ${colors.mobileWidth}) {
     main {
       margin-left: 30px;
       margin-right: 30px;
