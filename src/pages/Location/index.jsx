@@ -129,7 +129,6 @@ const HostRatingDiv = styled.div`
     align-content: stretch;
 `;
 
-//*/
 function Location() {
   const { id } = useParams();
   const logement = logements.filter((logement) => logement.id === id)[0];
@@ -147,7 +146,7 @@ function Location() {
           </div>
           <TagsDiv id="Tags">
             {logement.tags.map((tag) => (
-              <Tag tagName={tag} />
+              <Tag key={tag} tagName={tag} />
             ))}
           </TagsDiv>
         </div>
@@ -176,46 +175,6 @@ function Location() {
         </LeftRightDiv>
     </MainDiv>
   );
-  /*
-                ANCIEN RENDU
-  return (
-    <MainDiv>
-      <Caroussel pictures={logement.pictures} />
-      <GlobalInfos>
-        <${colors.mobileWidth}>
-          <div>
-            <LocTitle>{logement.title}</LocTitle>
-            <p>{logement.location}</p>
-          </div>
-          <HostDiv>
-            <HostName>{logement.host.name}</HostName>
-            <HostImg src={logement.host.picture} alt="Hôte"></HostImg>
-          </HostDiv>
-        </LeftRightDiv>
-        <LeftRightDiv>
-          <TagsDiv>
-            {logement.tags.map((tag) => (
-              <Tag tagName={tag} />
-            ))}
-          </TagsDiv>
-          <Rating rating={logement.rating} />
-        </LeftRightDiv>
-        <LeftRightDiv>
-          <Dropdown
-            key={"Description"}
-            title="Description"
-            content={logement.description}
-          />
-          <Dropdown
-            key={"Équipements"}
-            title="Équipements"
-            content={logement.equipments}
-          />
-        </LeftRightDiv>
-      </GlobalInfos>
-    </MainDiv>
-  );
-*/
 }
 
 export default Location;

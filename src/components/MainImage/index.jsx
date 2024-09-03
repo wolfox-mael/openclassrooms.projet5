@@ -56,7 +56,6 @@ const ContentImage = styled.img`
 `;
 
 function MainImage({ image, text }) {
-  console.clear();
 
   return (
     <Content>
