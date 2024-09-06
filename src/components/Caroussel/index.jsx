@@ -70,7 +70,6 @@ const TextInfo = styled.p`
   bottom: 0;
   right: 50%;
   transform: translateX(50%);
-  cursor: pointer;
   color: white;
   font-weight: 500;
   font-size: 18px;

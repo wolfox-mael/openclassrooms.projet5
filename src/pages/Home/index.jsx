@@ -42,7 +42,7 @@ const LocationGrid = styled.div`
 `;
 
 function Home() {
-  let text = (
+  const text = (
     <>
       Chez vous, <br id="mobile" /> partout et ailleurs
     </>

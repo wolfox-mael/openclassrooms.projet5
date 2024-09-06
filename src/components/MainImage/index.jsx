@@ -59,7 +59,7 @@ function MainImage({ image, text }) {
 
   return (
     <Content>
-      <ContentImage src={image}></ContentImage>
+      <ContentImage src={image} alt=""></ContentImage>
       <ContentText>{text}</ContentText>
     </Content>
   );
