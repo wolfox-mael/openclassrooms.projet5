@@ -1,0 +1,11 @@
+@import "../../utils/styles/variables";
+
+#rating_star {
+	width: 36px;
+	height: 36px;
+
+	@media screen and (max-width: $mobileWidth) {
+		width: 25px;
+		height: 25px;
+	}
+}

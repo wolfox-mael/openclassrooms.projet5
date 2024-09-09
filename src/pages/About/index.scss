@@ -1,0 +1,26 @@
+@import "../../utils/styles/variables";
+
+main {
+	#about {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		justify-content: center;
+		align-items: center;
+		align-content: stretch;
+		width: 100%;
+
+		#dropdowns {
+			padding: 0 100px 0 100px;
+		}
+
+		@media screen and (max-width: $mobileWidth) {
+			max-width: calc(100vw - 60px);
+			margin-bottom: 60px;
+
+			#dropdowns {
+				padding: 0;
+			}
+		}
+	}
+}

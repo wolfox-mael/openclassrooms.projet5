@@ -1,125 +1,28 @@
 import arrowImage from "../../assets/arrow-up.png";
-import styled from "styled-components";
-import colors from "../../utils/styles";
-
-const DropdownMenu = styled.div`
-  position: relative;
-  max-width: 600px;
-  width: 100%;
-  background-color: #f6f6f673;
-  border-radius: 10px;
-  margin: 20px 0 20px 0;
-  overflow: hidden;
-
-  @media screen and (max-width: ${colors.mobileWidth}) {
-    max-width: calc(100vw - 60px);
-    min-width: calc(100vw - 60px);
-    width: calc(100vw - 60px)%;
-  }
-`;
-
-const DropdownContent = styled.div`
-  max-width: 600px;
-  width: 100%;
-  max-height: fit-content;
-  transition: max-height 1s ease-in;
-
-  @media screen and (max-width: ${colors.mobileWidth}) {
-    max-width: calc(100vw - 60px);
-    min-width: calc(100vw - 60px);
-    width: calc(100vw - 60px)%;
-  }
-
-  overflow: hidden;
-  p {
-    transition: max-height 1s ease-out;
-  }
-  &.close {
-    max-height: 0;
-    p {
-      padding: 10px 20px 10px 20px;
-      overflow: hidden;
-    }
-  }
-  &.open {
-    max-height: auto;
-    p {
-      padding: 10px 20px 10px 20px;
-      overflow: hidden;
-    }
-  }
-`;
-
-const DropdownTitle = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: center;
-  align-content: stretch;
-  cursor: pointer;
-
-  background-color: ${colors.error};
-  padding: 10px 20px 10px 15px;
-  height: 32px;
-  border-radius: 10px;
-  font-size: 18px;
-  font-weight: 700;
-  text-align: left;
-  p {
-    color: white;
-    margin: 0;
-  }
-`;
-
-const DropdownContentText = styled.p`
-  border-radius: 10px;
-  font-size: 18px;
-  font-weight: 700;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-  padding: 10px 0 10px 0;
-  p {
-    margin: 5px 0 5px 0;
-  }
-`;
-
-const ArrowIMG = styled.img`
-  width: 32px;
-  height: 32px;
-  transform: rotate(0deg);
-  transition: transform 200ms ease-in-out;
-  &#close {
-    transform: rotate(0deg);
-  }
-  &#open {
-    transform: rotate(-180deg);
-  }
-`;
+import "./index.scss"
 
 function Dropdown({ title, content }) {
   return (
-    <DropdownMenu id={"dropdown-" + title}>
-      <DropdownTitle className="title" onClick={() => handleClick(title)}>
+    <div id={"dropdown-" + title} className="dropdown close">
+      <div className="title" onClick={() => handleClick(title)}>
         <p>{title}</p>
-        <ArrowIMG src={arrowImage} alt=""></ArrowIMG>
-      </DropdownTitle>
-      <DropdownContent className="content close">
+        <img src={arrowImage} alt="" />
+      </div>
+      <div className="content close">
         {typeof content === "object" ? (
           content.map((content) => (
-            <DropdownContentText key={content}>{content}</DropdownContentText>
+            <p key={content}>{content}</p>
           ))
         ) : (
-          <DropdownContentText>{content}</DropdownContentText>
+          <p>{content}</p>
         )}
-      </DropdownContent>
-    </DropdownMenu>
+      </div>
+    </div>
   );
 }
 
 function handleClick(title) {
-  const dropdown = document.querySelector(`#dropdown-${title} .content`);
+  const dropdown = document.querySelector(`#dropdown-${title}`);
   const arrow = document.querySelector(`#dropdown-${title} img`);
 
   switch (dropdown.className.includes("open")) {

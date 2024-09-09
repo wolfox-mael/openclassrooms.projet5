@@ -7,43 +7,7 @@ import Error from "./components/Error";
 import Home from "./pages/Home/";
 import About from "./pages/About";
 import Location from "./pages/Location";
-import { createGlobalStyle } from "styled-components";
-import colors from "./utils/styles";
-
-const GlobalStyle = createGlobalStyle`
-  div {
-    font-family: Montserrat;
-  }
-  
-  body {
-  margin: 0;
-  }
-
-  main {
-  width: 100%;
-  max-width: 1440px;
-  margin: 60px;
-  margin-left: auto;
-  margin-right: auto;
-  }
-
-  @media screen and (max-width: ${colors.midWidth}) {
-  main {
-    margin-left: 60px;
-    margin-right: 60px;
-    max-width: calc(100vw - 120px);
-  }
-}
-
-  @media screen and (max-width: ${colors.mobileWidth}) {
-  main {
-  margin-left: 30px;
-  margin-right: 30px;
-  max-width: calc(100vw - 60px);
-  margin-bottom: 60px;
-  }
-}
-`;
+import "./index.scss"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -58,7 +22,6 @@ root.render(
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     ></link>
-    <GlobalStyle />
     <Router>
       <Header />
       <Routes>

@@ -1,0 +1,25 @@
+@import "../../utils/styles/variables";
+
+footer {
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: stretch;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 189px;
+  }
+
+  p {
+    color: white;
+    font-family: Montserrat;
+    font-size: 24px;
+  }
+}

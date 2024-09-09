@@ -1,0 +1,15 @@
+@import "../../utils/styles/variables";
+
+.tag {
+    min-width: 115px;
+    width: fit-content;
+    text-align: center;
+    padding: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+    background-color: $error
+}
