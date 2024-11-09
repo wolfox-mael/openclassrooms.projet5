@@ -7,7 +7,7 @@ import Error from "./components/Error";
 import Home from "./pages/Home/";
 import About from "./pages/About";
 import Location from "./pages/Location";
-import "./index.scss"
+import "./index.scss";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -22,7 +22,7 @@ root.render(
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     ></link>
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
